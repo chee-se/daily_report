@@ -1,9 +1,11 @@
 #!/bin/bash
 
+GITHUB_PAGE="https://github.com/chee-se"
+
 if [ $# = 0 ]; then
     FILE=`date '+%Y/%m/%d.md'`
 else
     FILE=`date -v-$1d '+%Y/%m/%d.md'`
 fi
 
-open "https://github.com/chee-se/daily_report/blob/master/$FILE"
+open "$GITHUB_PAGE/daily_report/blob/master/$FILE"
