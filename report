@@ -1,8 +1,16 @@
 #!/bin/bash
 
-FILE=`date '+%Y/%m/%d.md'`
+if [ $# = 0 ]; then
+    FILE=`date '+%Y/%m/%d.md'`
+else
+    FILE=`date -v-$1d '+%Y/%m/%d.md'`
+fi
+
 FILE_DIR=$(cd $(dirname $0); pwd)
 FULLPATH_FILE="$FILE_DIR/$FILE"
+
+echo $FILE_DIR
+echo $FULLPATH_FILE
 
 if [-e "$FULLPATH_FILE"]; then
     open $FULLPATH_FILE
