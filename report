@@ -1,0 +1,13 @@
+#!/bin/bash
+
+FILE=`date '+%Y/%m/%d.md'`
+FILE_DIR=$(cd $(dirname $0); pwd)
+FULLPATH_FILE="$FILE_DIR/$FILE"
+
+if [-e "$FULLPATH_FILE"]; then
+    open $FULLPATH_FILE
+else
+    mkdir -p $FILE_DIR
+    touch $FULLPATH_FILE
+    open $FULLPATH_FILE
+fi
