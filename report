@@ -1,16 +1,19 @@
 #!/bin/bash
 
 if [ $# = 0 ]; then
-    FILE=`date '+%Y/%m/%d.md'`
+    DIRECTORY=`date '+%Y/%m'`
+    FILE=`date '+%d.md'`
 else
-    FILE=`date -v-$1d '+%Y/%m/%d.md'`
+    DIRECTORY=`date -v-$1d '+%Y/%m'`
+    FILE=`date -v-$1d '+%d.md'`
 fi
 
 FILE_DIR=$(cd $(dirname $0); pwd)
-FULLPATH_FILE="$FILE_DIR/$FILE"
+FULLPATH_DIRECTORY="$FILE_DIR/$DIRECTORY"
+FULLPATH_FILE="$FULLPATH_DIRECTORY/$FILE"
 
 if [ ! -e "$FULLPATH_FILE" ]; then
-    mkdir -p $FILE_DIR
+    mkdir -p $FULLPATH_DIRECTORY
     touch $FULLPATH_FILE
 fi
 
